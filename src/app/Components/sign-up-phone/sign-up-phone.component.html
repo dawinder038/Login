@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card-box">
+        <div class="card">
+            <div class="text-align card-body">
+                <div>
+                    <img src="../../../assets/logo.png" alt="Logo">
+                </div>
+                <div>
+                    <h3>Sign Up</h3>
+                </div>
+            </div>
+            <div class="padding">
+                <form [formGroup]="myForm">
+                    <div class="mb-2">
+                        <select class="form-select" aria-label="Default select example" formControlName="country_code">
+                            <option selected>Country/Region</option>
+                            <option value="+91">+91</option>
+                            <option value="+92">+92</option>
+                            <option value="+93">+93</option>
+                        </select>
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="mobile" formControlName="mobile">
+                    </div>
+                    <div>
+                        <button type="button" (click)="submit(myForm.value)" class="btn btn-danger w-100">SignUp</button>
+                    </div>
+                </form>
+                <div class="text-align mt-2">
+                    <p class="small-text">You have already account in? <a style="color: blue;">Sign In</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

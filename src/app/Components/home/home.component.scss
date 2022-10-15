@@ -1,0 +1,45 @@
+.text-align{
+    text-align: center;
+}
+.card
+{
+width: 500px;
+}
+.card-box
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #fdf0f1;
+   
+}
+.phone{
+    background-color: #e51b23;
+    border-radius: 8px;
+}
+.row{
+    margin: 0;
+   
+}
+.color-white{
+    color: white;
+}
+.height-width-100{
+    height: 100%;
+    width:100%;
+    outline: none;
+    border: none;
+}
+.facebook
+{
+    background-color: #3b5998;
+    border-radius: 8px;
+}
+.google{
+    background-color:#db4437;
+    border-radius: 8px;
+}
+.padding{
+    padding:0px 20px;
+}
