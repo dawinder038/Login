@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { LoginServiceService } from 'src/app/Services/login-service.service';
 
 @Component({
   selector: 'app-sign-up-phone',
@@ -8,8 +9,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SignUpPhoneComponent implements OnInit {
   myForm!: FormGroup;
+  // signUpData:any;
 
-  constructor() { }
+  constructor(private LoginService:LoginServiceService) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -21,7 +23,9 @@ export class SignUpPhoneComponent implements OnInit {
       mobile: new FormControl('', [Validators.required]),
     })
 }
+
 submit(data:any){
-  console.log(data);
+  console.log(data)
 }
+
 }

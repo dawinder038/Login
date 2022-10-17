@@ -11,9 +11,7 @@
             </div>
             <form [formGroup]="myForm">
                 <div class="padding">
-                    <div class="mb-2">
-                        <input type="text" class="form-control" placeholder="Name" formControlName="name" id="exampleInputEmail1" >
-                      </div>
+                   
                       <div class="mb-2">
                       
                         <input type="email" class="form-control" placeholder="Email" formControlName="email" id="mobile">
@@ -22,11 +20,22 @@
                         
                         <input type="password" class="form-control" placeholder="Password" formControlName="password" id="exampleInputPassword1">
                       </div>
+                      <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="Mobile" formControlName="mobile_number" id="exampleInputEmail1" >
+                      </div>
+                      <div class="mb-2">
+                        <select class="form-select" aria-label="Default select example" formControlName="country_code">
+                            <option selected>Country/Region</option>
+                            <option value="+91">+91</option>
+                            <option value="+92">+92</option>
+                            <option value="+93">+93</option>
+                        </select>
+                    </div>
                       <div>
-                        <button type="button" (click)="submit(myForm.value)" class="btn w-100 btn-primary"  >Sign Up</button>
+                        <button type="button" (click)="signUp(myForm.value)" class="btn w-100 btn-primary"  >Sign Up</button>
                       </div>
                       <div class="text-align mt-2">
-                        <p class="small-text">You have already account in? <a style="color: blue;" >Sign In</a> </p>
+                        <p class="small-text">You have already account in? <a style="color: blue;" routerLink="/login" >Sign In</a> </p>
                       </div>
                 </div>
             </form>
