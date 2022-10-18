@@ -1,3 +1,4 @@
+import { ResourceLoader } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
@@ -20,12 +21,16 @@ export class SignUpPhoneComponent implements OnInit {
   initializeForm() {
     this.myForm = new FormGroup({
       country_code: new FormControl('', [Validators.required]),
-      mobile: new FormControl('', [Validators.required]),
+      mobile_number: new FormControl('', [Validators.required]),
     })
 }
 
-submit(data:any){
+sendOtp(data:any){
   console.log(data)
+  this.LoginService.sendOtpApi(data).subscribe((result:any)=>{
+    console.log(result)
+  })
 }
+
 
 }

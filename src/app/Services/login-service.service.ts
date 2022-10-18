@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http'
+import { RouteReuseStrategy } from '@angular/router';
 
 
 @Injectable({
@@ -22,14 +23,22 @@ export class LoginServiceService {
   resetPasswordApi(data:any){
     return this.http.post(this.apiurl+"account/reset/password",data)
   }
-  // http://139.59.47.49:4004/api/account/send/otp
-  // signUpPhoneApi(data:any){
-  //   return this.http.post(this.apiurl+,data)
-  // }
-  uploadImage(event: any) {
+  uploadImage(event:any){
     let file = event.target.files[0];
-    let formData = new FormData();
-    formData.append('file', file)
-    return this.http.post(this.apiurl + '/upload/image', formData)
+    let formData=new FormData();
+    formData.append('file',file)
+    return this.http.post(this.apiurl+'upload/image',formData)
+  }
+  UserProfileGetApi(){
+    return this.http.get(this.apiurl+"profile")
+  }
+  profilePutApi(payload:any){
+    return this.http.put(this.apiurl+"edit-profile",payload)
+  }
+  sendOtpApi(data:any){
+  return this.http.post(this.apiurl+"account/send/otp",data)
+  }
+  verifyOtpApi(data:any){
+    return this.http.post(this.apiurl+"account/verify/otp",data)
   }
 }

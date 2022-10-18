@@ -22,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
     })
 }
 resetPassword(data:any){
-  let data2 =sessionStorage.getItem('signUpToken')
+  let data2 =sessionStorage.getItem('')
   let payload={
     data2,
     data

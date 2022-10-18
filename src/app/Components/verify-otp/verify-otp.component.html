@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="card-box">
+        <div class="card">
+            <div class="text-align card-body">
+                <div>
+                    <img src="../../../assets/logo.png" alt="Logo">
+                </div>
+                <div>
+                    <h3>Confirm Your Number</h3>
+                    <p></p>
+                </div>
+            </div>
+            <div class="padding">
+                <form [formGroup]="verifyOtpForm" >
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="OTP" formControlName="otp">
+                    </div>
+                    <div class="mb-2">
+                        <button type="button" (click)="verifyOtp(verifyOtpForm.value)"  style="background-color: #e51b23; color:white;"
+                             class="btn  w-100">Confirm
+                        </button>
+                    </div>
+                </form>
+                <div class="mb-2">
+                    <div class="text-align">
+                        <p>Didn't get otp ? <a>Send Again</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

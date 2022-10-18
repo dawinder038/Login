@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     this.LoginService.loginApi(data).subscribe((result:any)=>{
       console.log("sign In",result);
       sessionStorage.setItem('signUpToken',result.token);
+      window.location.reload();
     })
   }
 }

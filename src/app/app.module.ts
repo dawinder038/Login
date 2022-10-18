@@ -12,9 +12,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './Components/home/home.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { SignUpPhoneComponent } from './Components/sign-up-phone/sign-up-phone.component';
-import { HttpClientModule} from '@angular/common/http';
-import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { InterceptorService } from './Services/interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { VerifyOtpComponent } from './Components/verify-otp/verify-otp.component';
 
 
 @NgModule({
@@ -26,9 +29,9 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
     HomeComponent,
     SignUpComponent,
     SignUpPhoneComponent,
-    ChangePasswordComponent,
+  
     DashboardComponent,
-
+       VerifyOtpComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,10 +41,10 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
-   
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
-  providers:  [],
+  providers:  [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

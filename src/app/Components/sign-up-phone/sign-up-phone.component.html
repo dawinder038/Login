@@ -20,14 +20,14 @@
                         </select>
                     </div>
                     <div class="mb-2">
-                        <input type="text" class="form-control" placeholder="mobile" formControlName="mobile">
+                        <input type="text" class="form-control" placeholder="mobile" formControlName="mobile_number">
                     </div>
                     <div>
-                        <button type="button" (click)="submit(myForm.value)" class="btn btn-danger w-100">Continue</button>
+                        <button type="button" (click)="sendOtp(myForm.value)" routerLink="/verifyOtp" class="btn btn-danger w-100">Continue</button>
                     </div>
                 </form>
                 <div class="text-align mt-2">
-                    <p class="small-text">You have already account in? <a style="color: blue;">Sign In</a> </p>
+                    <p class="small-text">You have already account in? <a style="color: blue;" routerLink="/login" >Sign In</a> </p>
                 </div>
             </div>
         </div>
