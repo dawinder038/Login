@@ -6,18 +6,21 @@ import { AppComponent } from './app.component';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { LoginComponent } from './Components/login/login.component';
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
-import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
-import { ReactiveFormsModule ,FormsModule} from '@angular/forms';
+// import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './Components/home/home.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { SignUpPhoneComponent } from './Components/sign-up-phone/sign-up-phone.component';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { InterceptorService } from './Services/interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { VerifyOtpComponent } from './Components/verify-otp/verify-otp.component';
+import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+import { AuthGuardGuard } from './Services/auth-guard.guard';
+import { LoginServiceService } from './Services/login-service.service';
 
 
 @NgModule({
@@ -25,13 +28,13 @@ import { VerifyOtpComponent } from './Components/verify-otp/verify-otp.component
     AppComponent,
     LoginComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent,
+    // ResetPasswordComponent,
     HomeComponent,
     SignUpComponent,
     SignUpPhoneComponent,
-  
     DashboardComponent,
-       VerifyOtpComponent,
+    VerifyOtpComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,7 @@ import { VerifyOtpComponent } from './Components/verify-otp/verify-otp.component
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers:  [{provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },AuthGuardGuard,LoginServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

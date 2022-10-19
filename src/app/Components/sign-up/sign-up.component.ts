@@ -33,6 +33,7 @@ export class SignUpComponent implements OnInit {
       device_id: "1",
       fcm_id: "1"
     }
+
     this.LoginService.signUpApi(payload).subscribe((result: any) => {
       console.log(result)
     });

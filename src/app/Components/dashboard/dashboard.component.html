@@ -15,18 +15,18 @@
                     <div class="mb-2 form-group">
                         <label for="full-name" class="form-label">First Name</label>
                         <input type="text" class="form-control" formControlName="first_name" form  id="full-name"  aria-describedby="emailHelp">
-                        <span style="color: red;" *ngIf="first_name && first_name.invalid && first_name.touched " >This feild is not valid</span>
+                        <span style="color: red;" *ngIf="first_name && first_name.invalid && first_name.touched " >This field is not valid</span>
                     </div>
 
                     <div class="mb-2">
                         <label for="last-name" class="form-label">Last Name</label>
                         <input type="text" class="form-control" formControlName="last_name"  id="last-name" aria-describedby="emailHelp">
-                        <span style="color: red;" *ngIf="last_name && last_name.invalid && last_name.touched" >This Feild is not valid</span>
+                        <span style="color: red;" *ngIf="last_name && last_name.invalid && last_name.touched" >This Field is not valid</span>
                     </div>
                     <div class="mb-2">
                         <label for="DOB" class="form-label">Date of Birth</label>
                         <input type="date" class="form-control" formControlName="dob" id="DOB" aria-describedby="emailHelp">
-                        <span style="color: red;" *ngIf=" DOB && DOB.invalid && DOB.touched " >This Feild is not valid</span>
+                        <span style="color: red;" *ngIf=" DOB && DOB.invalid && DOB.touched " >This Field is not valid</span>
                     </div>
                     <div class="mb-2">
                         <label for="mobile" class="form-label">Mobile Number</label>
@@ -43,7 +43,7 @@
                         <textarea class="form-control" id="address" formControlName="address" rows="3" aria-describedby="emailHelp"></textarea>
                         <span style="color: red;" *ngIf="Address && Address.invalid && Address.touched" >This feild Should Not be Empty</span>
                     </div>
-                    <button type="submit" (click)="editProfile(editForm.value)" class="btn btn-primary">Submit</button>
+                    <button type="submit" [disabled]="editForm.invalid" (click)="editProfile(editForm.value)" class="btn btn-primary">Submit</button>
                 </form>
             </div>
             <div class="col-3">
@@ -54,7 +54,6 @@
                     <img [src]=bgImage alt="">
                     <form [formGroup]="imageForm" (ngSubmit)="submitForm(imageForm.value)" >
                         <input type="file" formControlName='image'  (change)="fileChange($event)"  class="mt-2">
-                        <!-- <input type="submit" value="Upload"> -->
                     </form>
                 </div>
             </div>

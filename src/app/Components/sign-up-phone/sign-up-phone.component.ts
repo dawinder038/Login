@@ -24,13 +24,12 @@ export class SignUpPhoneComponent implements OnInit {
       mobile_number: new FormControl('', [Validators.required]),
     })
 }
-
 sendOtp(data:any){
   console.log(data)
   this.LoginService.sendOtpApi(data).subscribe((result:any)=>{
     console.log(result)
+    sessionStorage.setItem('mobile_number',data.mobile_number);
   })
 }
-
 
 }

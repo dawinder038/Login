@@ -13,21 +13,31 @@
                 <form [formGroup]="myForm">
                     <div class="mb-2">
                         <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                        <span style="color: red;" *ngIf="Email && Email.invalid && Email.touched" >Valid Email Address is Required</span>
                     </div>
                     <div class="mb-2">
-                        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+
+                        <!-- <button >{{show ? 'Show' : 'Hide'}}</button> -->
+                        <input [type]="show ? 'text' : 'password'" class="form-control p-absolute"
+                            placeholder="Password" formControlName="password">
+                        <svg class="w-64 h-64 p-relative" width="24" height="24" (click)="password()"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="none" viewBox="0 0 24 24">
+                            <path
+                                d="M12 5c-7.633 0-9.927 6.617-9.948 6.684L1.946 12l.105.316C2.073 12.383 4.367 19 12 19s9.927-6.617 9.948-6.684l.106-.316-.105-.316C21.927 11.617 19.633 5 12 5zm0 11c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4z">
+                            </path>
+                            <path d="M12 10c-1.084 0-2 .916-2 2s.916 2 2 2 2-.916 2-2-.916-2-2-2z"></path>
+                        </svg>
                     </div>
+                    <span style="color: red;" *ngIf="Password && Password.invalid && Password.touched" >Valid Password is Required</span>
                     <div class="password mb-2">
-                        <a ></a>
-                        <a routerLink="/forgotPassword" >Forgot Password</a>
+                        <a></a>
+                        <a routerLink="/forgotPassword">Forgot Password</a>
                     </div>
-                    <div class="mb-2" >
-                        <button type="button" (click)="login(myForm.value)"  class="btn w-100"  style="background-color: #e51b23; color:white;" routerLink="/dashboard" >Login</button>
+                    <div class="mb-2">
+                        <button type="button" (click)="login(myForm.value)" class="btn w-100"
+                            style="background-color: #e51b23; color:white;" >Login</button>
                     </div>
                 </form>
-                <div class="text-align mt-2 ">
-                    <p class="">Don't have an account ?<a style="color: blue;" class="ms-1"  routerLink="/signUp" >Sign Up</a></p>
-                </div>
             </div>
         </div>
     </div>

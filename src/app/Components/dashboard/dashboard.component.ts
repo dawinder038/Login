@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     })
     this.editForm = new FormGroup({
       first_name: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
-      last_name: new FormControl('', [Validators.required]),
+      last_name: new FormControl('', [Validators.required,Validators.pattern('[a-zA-Z]+$')]),
       dob: new FormControl('', [Validators.required]),
       mobile_number: new FormControl('', [Validators.required,Validators.pattern("^((\\+91-?) |0)?[0-9]{10}$")]),
       address: new FormControl('', [Validators.required]),
@@ -55,11 +55,11 @@ export class DashboardComponent implements OnInit {
       console.log(result);
       this.email = result.profile.email;
       this.mobile_number = result.profile.mobile_number;
-      this.firstName = result.profile.first_name;
-      this.lastName = result.profile.last_name;
+      sessionStorage.setItem('token',result.profile.token);
     });
   }
   editProfile(data: any) {
+    console.log(data)
     this.uploadImage.profilePutApi(data).subscribe((result: any) => {
       console.log(result);
       this.result=result;
@@ -68,7 +68,6 @@ export class DashboardComponent implements OnInit {
         this.showSuccess();
       }
       this.getUserData();
-     
     })
   }
   showSuccess() {
