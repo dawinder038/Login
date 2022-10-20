@@ -21,7 +21,7 @@ export class SignUpPhoneComponent implements OnInit {
   initializeForm() {
     this.myForm = new FormGroup({
       country_code: new FormControl('', [Validators.required]),
-      mobile_number: new FormControl('', [Validators.required]),
+      mobile_number: new FormControl('', [Validators.required,Validators.pattern("^((\\+91-?) |0)?[0-9]{10}$")]),
     })
 }
 sendOtp(data:any){
@@ -31,5 +31,12 @@ sendOtp(data:any){
     sessionStorage.setItem('mobile_number',data.mobile_number);
   })
 }
+get Mobile(){
+  return this.myForm.get('mobile_number');
+}
+get Country(){
+  return this.myForm.get('country_code');
+}
+
 
 }

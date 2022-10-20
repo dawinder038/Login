@@ -11,15 +11,17 @@ import { LoginServiceService } from 'src/app/Services/login-service.service';
 export class SignUpComponent implements OnInit {
   modalRef?: BsModalRef;
   myForm!: FormGroup;
+  message:any;
+  show: boolean = false;
   constructor(private modalService: BsModalService, private Route: Router, private LoginService: LoginServiceService) { }
   ngOnInit(): void {
     this.initializeForm();
   }
   initializeForm() {
     this.myForm = new FormGroup({
-      email: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      mobile_number: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required,Validators.email]),
+      password: new FormControl('', [Validators.required,Validators.pattern(/^(?=\D*\d)(?=[^a-z]*[a-z])(?=.*[$@$!%*?&])(?=[^A-Z]*[A-Z]).{8,30}$/)]),
+      mobile_number: new FormControl('', [Validators.required,Validators.pattern("^((\\+91-?) |0)?[0-9]{10}$")]),
       country_code: new FormControl('', [Validators.required])
     })
   }
@@ -35,7 +37,33 @@ export class SignUpComponent implements OnInit {
     }
 
     this.LoginService.signUpApi(payload).subscribe((result: any) => {
-      console.log(result)
+      console.log(result);
+      this.message=result.message;
+      setTimeout(() => {
+        if(this.message=='User registered successfully'){
+          this.Route.navigate(['/login']);
+          return true
+        }
+        else{
+          return false
+        }
+      }, 1500);
+     
     });
+  }
+  password() {
+    this.show = !this.show;
+  }
+  get Email(){
+    return this.myForm.get('email');
+  }
+  get Password(){
+    return this.myForm.get('password');
+  }
+  get Mobile(){
+    return this.myForm.get('mobile_number');
+  }
+  get Country(){
+    return this.myForm.get('country_code');
   }
 }

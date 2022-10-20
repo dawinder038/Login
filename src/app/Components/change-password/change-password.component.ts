@@ -16,13 +16,13 @@ export class ChangePasswordComponent implements OnInit {
     this.initializeForm();
   }
   initializeForm() {
-    this.changePasswordForm = new FormGroup({
+    this.changePasswordForm = new FormGroup({ 
       password: new FormControl('', [Validators.required]),
     })
   }
   resetPassword(data:any){
-    let data2 =sessionStorage.getItem('token');
-    console.log(data2)
+    let data2 = sessionStorage.getItem('token');
+    console.log(data2);
     this.LoginService.resetPasswordApi({"token":String(data2),"password":String(data)}).subscribe((result)=>{
       console.log(result);
     });

@@ -9,6 +9,9 @@ import { RouteReuseStrategy } from '@angular/router';
 
 })
 export class LoginServiceService {
+  getAuthStatus() {
+    throw new Error('Method not implemented.');
+  }
   apiurl: any = 'http://139.59.47.49:4004/api/'
 
   constructor(private http: HttpClient) { }
@@ -46,8 +49,4 @@ export class LoginServiceService {
   changePasswordApi(data: any) {
     return this.http.put(this.apiurl + "account/change/password", data)
   }
-  isDashboardRight():boolean{
-    return true;
-  }
-
 }

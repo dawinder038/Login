@@ -3,9 +3,10 @@
         <div>
             <h2>Wel Come to My Profile</h2>
         </div>
-        <div class="d-flex flex-column" >
+        <div class="d-flex" >
             <button class="btn btn-primary " (click)="disableFalse()" >Edit Profile</button>
-           <a routerLink="/changePassword">Change Password</a>
+            <button class="btn ms-2 btn-danger" (click)="logout()" >Logout</button>
+          
         </div>
     </div>
     <div class="card">
@@ -14,13 +15,13 @@
                 <form class="p-3" [formGroup]="editForm">
                     <div class="mb-2 form-group">
                         <label for="full-name" class="form-label">First Name</label>
-                        <input type="text" class="form-control" formControlName="first_name" form  id="full-name"  aria-describedby="emailHelp">
+                        <input type="text" class="form-control" formControlName="first_name" value="{{firstName}}" form  id="full-name"  aria-describedby="emailHelp">
                         <span style="color: red;" *ngIf="first_name && first_name.invalid && first_name.touched " >This field is not valid</span>
                     </div>
 
                     <div class="mb-2">
                         <label for="last-name" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" formControlName="last_name"  id="last-name" aria-describedby="emailHelp">
+                        <input type="text" class="form-control" formControlName="last_name"  value="{{lastName}}" id="last-name" aria-describedby="emailHelp">
                         <span style="color: red;" *ngIf="last_name && last_name.invalid && last_name.touched" >This Field is not valid</span>
                     </div>
                     <div class="mb-2">
@@ -55,6 +56,10 @@
                     <form [formGroup]="imageForm" (ngSubmit)="submitForm(imageForm.value)" >
                         <input type="file" formControlName='image'  (change)="fileChange($event)"  class="mt-2">
                     </form>
+                    
+                </div>
+                <div>
+                    <a routerLink="/changePassword">Change Password</a>
                 </div>
             </div>
         </div>

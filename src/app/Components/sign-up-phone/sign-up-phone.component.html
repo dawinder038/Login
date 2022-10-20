@@ -18,12 +18,15 @@
                             <option value="+92">+92</option>
                             <option value="+93">+93</option>
                         </select>
+                        <span style="color: red;" *ngIf="Country && Country.invalid && Country.touched">Required</span>
                     </div>
                     <div class="mb-2">
                         <input type="text" class="form-control" placeholder="mobile" formControlName="mobile_number">
+                        <span style="color: red;" *ngIf="Mobile && Mobile.invalid && Mobile.touched">Please Enter only valid Mobile
+                            Number</span>
                     </div>
                     <div>
-                        <button type="button" (click)="sendOtp(myForm.value)" routerLink="/verifyOtp" class="btn btn-danger w-100">Continue</button>
+                        <button type="button" [disabled]="myForm.invalid" (click)="sendOtp(myForm.value)" routerLink="/verifyOtp" class="btn btn-danger w-100">Continue</button>
                     </div>
                 </form>
                 <div class="text-align mt-2">

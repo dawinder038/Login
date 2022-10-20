@@ -3,7 +3,9 @@ import jwt_decode from 'jwt-decode';
 import { TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-declare var FB:any;
+import { Router } from '@angular/router';
+
+declare var FB: any;
 
 @Component({
   selector: 'app-home',
@@ -12,9 +14,7 @@ declare var FB:any;
 })
 export class HomeComponent implements OnInit {
   modalRef?: BsModalRef;
-
-
-  constructor(private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService, private router: Router) { }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
@@ -27,29 +27,9 @@ export class HomeComponent implements OnInit {
   loginByGoogle() {
     let userData = jwt_decode(String(sessionStorage.getItem('googleAuthToken')));
     console.log(userData);
+    if (userData != 'null') {
+      this.router.navigateByUrl('/dashboard');
+    }
   }
-
-   
-
-fbAsyncInit(){
-  FB.init({
-    appId      : '{773923640339728}',
-    cookie     : true,
-    xfbml      : true,
-    version    : '{api-version}'
-  });
-    
-  FB.AppEvents.logPageView();   
-    
-};
-
-second(d:any, s:any, id:any){
-   var js, fjs = d.getElementsByTagName(s)[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement(s); js.id = id;
-   js.src = "https://connect.facebook.net/en_US/sdk.js";
-   fjs.parentNode.insertBefore(js, fjs);
- }
-//  (document, 'script', 'facebook-jssdk'));
 
 }

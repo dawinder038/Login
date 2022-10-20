@@ -13,8 +13,7 @@ export class LoginComponent implements OnInit {
   show: boolean = false;
 
   constructor(private LoginService:LoginServiceService,private router:Router) { }
-  
-
+   
   ngOnInit(): void {
    this.initializeForm();
 
@@ -28,9 +27,10 @@ export class LoginComponent implements OnInit {
   login(data:any){
     this.LoginService.loginApi(data).subscribe((result:any)=>{
       console.log(result);
-      console.log(result.error)
-      sessionStorage.setItem('signUpToken',result.token);
-      this.router.navigate(['/dashboard'])
+       sessionStorage.setItem('signUpToken',result.token);
+       setTimeout(() => {
+        this.router.navigateByUrl('/dashboard');
+       }, 2000); 
     })
   }
   password() {

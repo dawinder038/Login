@@ -6,6 +6,11 @@
                     <img src="../../../assets/logo.png" alt="Logo">
                 </div>
                 <div>
+                    <svg class="w-64 h-64" width="18" heigh="18" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18">
+                        </path>
+                    </svg>
                     <h3>Welcome Back</h3>
                 </div>
             </div>
@@ -13,11 +18,10 @@
                 <form [formGroup]="myForm">
                     <div class="mb-2">
                         <input type="text" class="form-control" placeholder="Email" formControlName="email">
-                        <span style="color: red;" *ngIf="Email && Email.invalid && Email.touched" >Valid Email Address is Required</span>
+                        <span style="color: red;" *ngIf="Email && Email.invalid && Email.touched">Valid Email Address is
+                            Required</span>
                     </div>
                     <div class="mb-2">
-
-                        <!-- <button >{{show ? 'Show' : 'Hide'}}</button> -->
                         <input [type]="show ? 'text' : 'password'" class="form-control p-absolute"
                             placeholder="Password" formControlName="password">
                         <svg class="w-64 h-64 p-relative" width="24" height="24" (click)="password()"
@@ -28,14 +32,13 @@
                             <path d="M12 10c-1.084 0-2 .916-2 2s.916 2 2 2 2-.916 2-2-.916-2-2-2z"></path>
                         </svg>
                     </div>
-                    <span style="color: red;" *ngIf="Password && Password.invalid && Password.touched" >Valid Password is Required</span>
                     <div class="password mb-2">
                         <a></a>
                         <a routerLink="/forgotPassword">Forgot Password</a>
                     </div>
                     <div class="mb-2">
                         <button type="button" (click)="login(myForm.value)" class="btn w-100"
-                            style="background-color: #e51b23; color:white;" >Login</button>
+                            style="background-color: #e51b23; color:white;">Login</button>
                     </div>
                 </form>
             </div>

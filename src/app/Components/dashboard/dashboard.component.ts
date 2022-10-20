@@ -2,6 +2,7 @@ import { Component, importProvidersFrom, OnInit } from '@angular/core';
 import { LoginServiceService } from 'src/app/Services/login-service.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,7 @@ export class DashboardComponent implements OnInit {
   firstName: any;
   lastName: any;
   result:any;
-  constructor(private uploadImage: LoginServiceService, private toastr: ToastrService) { }
+  constructor(private uploadImage: LoginServiceService, private toastr: ToastrService,private router:Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -53,6 +54,8 @@ export class DashboardComponent implements OnInit {
   getUserData() {
     this.uploadImage.UserProfileGetApi().subscribe((result: any) => {
       console.log(result);
+      this.firstName=result.profile.first_name;
+      this.lastName=result.profile.first_name;
       this.email = result.profile.email;
       this.mobile_number = result.profile.mobile_number;
       sessionStorage.setItem('token',result.profile.token);
@@ -63,12 +66,18 @@ export class DashboardComponent implements OnInit {
     this.uploadImage.profilePutApi(data).subscribe((result: any) => {
       console.log(result);
       this.result=result;
+      this.getUserData();
  
       if(this.result){
         this.showSuccess();
       }
-      this.getUserData();
+      
     })
+  }
+  logout(){
+    sessionStorage.clear();
+    // window.location.reload();
+    this.router.navigate(['/signUp'])
   }
   showSuccess() {
     this.toastr.success('Successfully', 'Profile Updated ');

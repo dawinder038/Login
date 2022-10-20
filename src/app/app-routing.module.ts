@@ -13,16 +13,16 @@ import { VerifyOtpComponent } from './Components/verify-otp/verify-otp.component
 import { AuthGuardGuard } from './Services/auth-guard.guard';
 
 const routes: Routes = [
- 
+ {path:"home",component:HomeComponent},
+  {path:"",redirectTo:"home",pathMatch:"full"},
   {path:"login",component:LoginComponent},
   {path:"signUp",component:SignUpComponent},
   {path:"verifyOtp",component:VerifyOtpComponent},
   {path:"signUpPhone",component:SignUpPhoneComponent},
   {path:"forgotPassword",component:ForgotPasswordComponent},
-  // {path:"resetPassword",component:ResetPasswordComponent},
   {path:"dashboard",component:DashboardComponent ,canActivate:[AuthGuardGuard]},
   {path:"changePassword",component:ChangePasswordComponent},
-  {path:"**",component:HomeComponent},
+  {path:"******",component:HomeComponent},
 ];
 
 @NgModule({
