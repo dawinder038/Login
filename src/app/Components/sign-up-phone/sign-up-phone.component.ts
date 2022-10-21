@@ -31,6 +31,7 @@ sendOtp(data:any){
     sessionStorage.setItem('mobile_number',data.mobile_number);
   })
 }
+
 get Mobile(){
   return this.myForm.get('mobile_number');
 }
